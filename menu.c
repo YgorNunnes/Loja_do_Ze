@@ -2,26 +2,25 @@
 #include <string.h>
 #include "menu.h"
 
-char *produtos[10] = {"Radiador","Velas de Ignição","Filtro de Óleo", "Pastilhas de Freio", 
-"Filtro de Ar", "Bateria", "Alternador", "Pneus", "Calotas", "Faróis"};
+int estoque[10] = {0};
+float vet_crediario[10] = {0};
 
-int estoque[10];// = {100,100,100,100,100,100,100,100,100,100};
-
-float vet_crediario[10];
 int consultar_estoque();
-int preencher_estoque();
+void preencher_estoque();
+int comprar();
+int contusta_debitos();
+int pagar_debitos();
+void sorteio(float vet_crediario[]);
 
 int main(){
     int opc_menu;
-    float precos[10];
-    
+    printf(" \n");
     printf("Bem vindo ao Ferro Velho do Zé!\n");
     printf("Escolha o que deseja fazer pelo menu: \n");
     printf(" \n");
 
-    //max_estoque(estoque);
 
-    while(1){
+    while(opc_menu != 0){
         printf("---------------------Menu---------------------\n");
         printf("1 - Comprar \n");
         printf("2 - Consultar débitos\n");
@@ -30,6 +29,7 @@ int main(){
         printf("5 - Pagar débitos\n");
         printf("6 - Sortear um cliente para perdoar as dívidas\n");
         printf("0 - Sair\n");
+        printf(" \n");
 
         scanf("%d", &opc_menu);
 
@@ -39,27 +39,34 @@ int main(){
                 return 0;
             case 1:
                 printf("Abrindo menu compras...\n");
-                return comprar();
-                /*
+                printf(" \n");
+                comprar();
+                break;
             case 2:
-                printf("Abrindo Consulta de Débitos...");
-                return contulta_debitos();
-                break;*/
+                printf("Abrindo Consulta de Débitos...\n");
+                printf(" \n");
+                consulta_debitos();
+                break;
             case 3:
-                printf("Abrindo Preenchimento de Estoque...");
-                return preencher_estoque();
+                printf("Abrindo Preenchimento de Estoque...\n");
+                printf(" \n");
+                preencher_estoque();
+                break;
             case 4:
-                printf("Abrindo Consulta de Estoque...");
-                return consultar_estoque();
-                /*
+                printf("Abrindo Consulta de Estoque...\n");
+                printf(" \n");
+                consultar_estoque();
+                break;
             case 5:
-                printf("Abrindo Quitação de Débitos...");
-                return pagar_debitos();
+                printf("Abrindo Quitação de Débitos...\n");
+                printf(" \n");
+                pagar_debitos();
                 break;
             case 6:
-                printf("Sorteando...");
-                return sorteio();
-                break;*/
+                printf("Sorteando...\n");
+                printf(" \n");
+                sorteio(vet_crediario);
+                break;
             }
         }
     return 0;
